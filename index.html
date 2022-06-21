@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        *,
+         ::after,
+         ::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 62.5%;
+        }
+        
+         :root {
+            --bgc-color: #137E73;
+            --dark: #000;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
+            font-size: 1.6rem;
+        }
+        
+        .input-btn {
+            background-color: var(--dark);
+            color: #fff;
+            font-size: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+            margin: 1rem;
+            cursor: pointer;
+        }
+        
+        #modal-section {
+            position: relative;
+            height: 100vh;
+        }
+        
+        .modal {
+            width: 50%;
+            background-color: #fff;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 1rem;
+            display: none;
+            z-index: 1000000;
+            border: 1px solid rgba(0, 0, 0, .2);
+        }
+        
+        .modal-inner {
+            width: 100%;
+            height: 100%;
+            padding: 2rem 2.5rem;
+        }
+        
+        .inner-head {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .inner-head .title {
+            font-size: 2.5rem;
+        }
+        
+        .inner-head .close {
+            background-color: transparent;
+            border: none;
+            color: #000;
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+        
+        .inner-body {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        
+        #text {
+            padding: 1rem 1.5rem;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            width: 100%;
+            border: 1px solid rgba(0, 0, 0, .5);
+        }
+        
+        #text::placeholder {
+            font-size: 1.5rem;
+        }
+        
+        [type="submit"] {
+            padding: 1.5rem 1.5rem;
+            border-radius: 5px;
+            border: none;
+            background-color: var(--bgc-color);
+            color: #fff;
+            width: 50%;
+            font-weight: 600;
+            margin: 0 auto;
+            letter-spacing: 0.12em;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .success,
+        .failed {
+            text-align: center;
+            padding: 1rem 0;
+            border-radius: 5px;
+        }
+        
+        .failed {
+            color: #A94442;
+            background-color: #F2DEDE;
+        }
+        
+        .success {
+            color: #3C763D;
+            background-color: #DFF0D8;
+        }
+        
+        @media (min-width: 1200px) {
+            .modal {
+                width: 30%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .modal {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="modal-section">
+        <button type="button" class="input-btn">Input</button>
+
+        <!-- Modal -->
+        <div class="modal">
+            <div class="modal-inner">
+                <div class="inner-head">
+                    <h5 class="title">Daxil Ol</h5>
+                    <button class="close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="inner-body">
+                    <input type="text" placeholder="Daxil et" id="text">
+                    <p class="success">
+                        Daxil Oldunuz !
+                    </p>
+                    <!-- <div class="failed">
+                        8 herfden cox olmalidir soz
+                    </div> -->
+                    <button type="submit">Daxil Ol</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const modal = document.querySelector(".modal");
+        document.querySelector(".input-btn").addEventListener("click", () => {
+            if (modal.classList.contains("show")) {
+                modal.classList.remove("show");
+                document.querySelector("#modal-section").style.backgroundColor = "transparent";
+            } else {
+                modal.classList.add("show");
+                document.querySelector("#modal-section").style.backgroundColor = "rgba(0,0,0,0.3)";
+            }
+        });
+        document.querySelector(".close").addEventListener("click", () => {
+            modal.classList.remove("show");
+            document.querySelector("#modal-section").style.backgroundColor = "transparent";
+        })
+    </script>
+</body>
+
+</html>
